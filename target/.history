@@ -1,0 +1,15 @@
+run
+update
+jetty-run
+exit
+jetty-run
+jetty-run:
+jetty-run:aaa
+run
+exit
+update
+run
+update
+jetty-run
+test
+exit
