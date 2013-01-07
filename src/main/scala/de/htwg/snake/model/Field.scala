@@ -29,7 +29,10 @@ class Field(val x: Int, val y: Int) {
         } else cells(foodX)(foodY) = CellType.FOOD
         this.food = Array(foodX, foodY)
         return this.food
-      } else getFood(snake)
+      } else {
+        count -= 1; getFood(snake)
+      }
+
     } else {
       if (extraActive) {
         countExtra += 1
@@ -43,6 +46,23 @@ class Field(val x: Int, val y: Int) {
       return food;
     }
   }
+
+  def initialize = {
+    for (x <- 0 to this.x) {
+      for (y <- 0 to this.y) {
+        // default: leer
+        this.cells(x)(y) = CellType.EMPTY
+
+        // x-borders
+        this.cells(0)(y) = CellType.BARRICADE
+        this.cells(this.x)(y) = CellType.BARRICADE
+      }
+      // y-borders
+      this.cells(x)(0) = CellType.BARRICADE
+      this.cells(x)(this.y) = CellType.BARRICADE
+    }
+  }
+
 }
 
 object CellType extends Enumeration {

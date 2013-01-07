@@ -16,19 +16,7 @@ class SnakeModel(val x: Int = 30, val y: Int = 30) {
   }
 
   def initField = {
-    for (x <- 0 to field.x) {
-      for (y <- 0 to field.y) {
-        // default: leer
-        field.cells(x)(y) = CellType.EMPTY
-
-        // x-borders
-        field.cells(0)(y) = CellType.BARRICADE
-        field.cells(field.x)(y) = CellType.BARRICADE
-      }
-      // y-borders
-      field.cells(x)(0) = CellType.BARRICADE
-      field.cells(x)(field.y) = CellType.BARRICADE
-    }
+    field.initialize
     // First Food
     val foodPos = field.getFood(snake)
     println("Food:" + foodPos(0) + foodPos(1))

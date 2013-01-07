@@ -53,7 +53,6 @@ class Gui(controller: SnakeController) extends MainFrame {
     }
     contents += new Menu("Size") {
       mnemonic = Key.S
-      contents += new MenuItem(Action("Impossibly small") { changeSize(3) })
       contents += new MenuItem(Action("Small") { changeSize(10) })
       contents += new MenuItem(Action("Default") { changeSize(30) })
       contents += new MenuItem(Action("Big") { changeSize(50) })
