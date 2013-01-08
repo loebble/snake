@@ -9,7 +9,7 @@ class SnakeModel(val x: Int = 30, val y: Int = 30) {
   var dead = false
   private var _name = "noName"
   def name = _name
-  def name_= (value:String):Unit = _name = value
+  def name_= (value:String) = _name = value
 
   def initSnake = {
     snake ::= new SnakePosition(field.x / 2, field.y / 2)

@@ -1,2 +1,10 @@
-noName;6
-noName;0
+noName;108
+Steven;100
+Jan;50
+noName;36
+Mark;10
+Mark;10
+Mark;10
+Mark;10
+Mark;10
+Mark;10

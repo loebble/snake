@@ -1,11 +1,10 @@
 package de.htwg.snake.controller
 
-import scala.swing.TextField
-import de.htwg.util.Observable
-import de.htwg.snake.model.SnakeModel
-import de.htwg.snake.model.SnakePosition
 import de.htwg.snake.model.Highscores
 import de.htwg.snake.model.Score
+import de.htwg.snake.model.SnakeModel
+import de.htwg.snake.model.SnakePosition
+import de.htwg.util.Observable
 
 class SnakeController() extends Observable {
   var speed = 2;	// default
@@ -53,7 +52,6 @@ class SnakeController() extends Observable {
     }
     val res = model.handleNewPosition(newPos)
     res match {
-      //TODO Namensabfrage
       case "death" => println("tot - score: " + score) ; highscores.writeToHighscores(model.name,score.get); model.dead = true
       case "grow" => println("wachsen"); score.scored
       case "growExtra" => println("Extra wachsen"); score.scoredExtra

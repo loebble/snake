@@ -12,6 +12,22 @@ class FieldSpec extends SpecificationWithJUnit {
       cells.length must be_==(31)
       cells(0).length must be_==(31)
     }
+    "have its borders to be Barricades" in {
+      val f1 = new Field(30, 30)
+      f1.initialize
+      val cells = f1.cells
+      var bar = true
+      for (x <- 0 to f1.x) {
+        for (y <- 0 to f1.y) {
+          if(f1.cells(0)(y) != CellType.BARRICADE) bar =false
+          if(f1.cells(f1.x)(y) != CellType.BARRICADE)bar =false
+        }
+        // y-borders
+        if(f1.cells(x)(0) != CellType.BARRICADE) bar = false
+        if(f1.cells(x)(f1.y) != CellType.BARRICADE) bar = false
+      }
+      bar must be_==(true)
+    }
     "give me a Food and set the CellType on the field to FOOD" in {
       field.food = Array(-1, -1)
       val p = field.getFood(snake)
@@ -20,30 +36,28 @@ class FieldSpec extends SpecificationWithJUnit {
       cellType must be_==(CellType.FOOD)
     }
     "give me an ExtraFood after the 5th time requesting a food" in {
-      for(x <- 0 to 3){
+      val field = new Field(30, 30)
+      field.initialize
+      for (x <- 0 to 4) {
         field.food = Array(-1, -1)
         val food = field.getFood(snake)
-        if(x == 3){
+        if (x == 4) {
           val cellType = field.cells(food(0))(food(1))
           cellType must be_==(CellType.EXTRAFOOD)
           field.count must be_==(0)
           field.extraActive must be_==(true)
           field.countExtra must be_==(0)
-          "and after 35 times requesting ExtraFood it must be gone and replaced with regular food" in {
-            val oldPos = field.getFood(snake)
-            for(x<- 0 to 35){
-              val food = field.getFood(snake)
-            }
-            val food = field.getFood(snake)
-            val cellType = field.cells(food(1))(food(2))
-            cellType must be_==(CellType.FOOD)
-            val cells = field.cells
-            cells(food(1))(food(2))must be_==(CellType.FOOD)
-            oldPos must be_!=(field.getFood(snake))
-            field.extraActive must be_==(false)
-          }
         }
       }
+    }
+    "After 35 times requesting (Extra)Food it must be gone and replaced with regular food" in {
+      for (x <- 0 to 35) {
+        val food = field.getFood(snake)
+      }
+      val food = field.getFood(snake)
+      val cells = field.cells
+      cells(food(0))(food(1)) must be_==(CellType.FOOD)
+      field.extraActive must be_==(false)
     }
   }
 }
