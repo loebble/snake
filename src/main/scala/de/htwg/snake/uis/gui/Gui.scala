@@ -11,7 +11,6 @@ import scala.swing.TextField
 import scala.swing.event.Key
 
 import de.htwg.snake.controller.SnakeController
-import de.htwg.snake.model.SnakePanel
 import de.htwg.snake.uis.gui.themes.MonochromeTheme
 import de.htwg.snake.uis.gui.themes.NokiaTheme
 
