@@ -21,7 +21,7 @@ class Highscores(x:Int = 30) {
     var highscore = readFromHighscores();
     highscore.+=((name, score))
     val sortedScores = highscore.sortWith(_._2 > _._2)
-    val best10 = sortedScores.splitAt(10)._1
+    val best10 = sortedScores.splitAt(5)._1
     val f = new BufferedWriter(new FileWriter(path))
     try {
       best10.foreach(s => f.write(s._1 + ";" + s._2+"\n"))
