@@ -33,6 +33,14 @@ class SnakeControllerSpec extends SpecificationWithJUnit {
       controller.model.getHead.x must be_==(15)
       controller.model.getHead.y must be_==(15)
     }
+    "correctly start a new Game" in {
+      val controller = new SnakeController
+      val pName = "Hans"
+      controller.model.name = pName
+      controller.newGame
+      controller.model.name must be_==(pName)
+      controller.score.get must be_==(0)
+    }
     
   }
 

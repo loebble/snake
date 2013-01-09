@@ -34,6 +34,10 @@ class Tui(var controller: SnakeController) extends Observer {
       }
       println("");
     }
+    if(controller.isDead == true){
+      println("Highscores:")
+      controller.getHighscores.foreach(s => println(s._1 +":"+ s._2))
+    }
   }
 
   override def update = {

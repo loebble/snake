@@ -11,7 +11,6 @@ class SnakeController() extends Observable {
   var gameSize = 30 // default
   var direction = Direction.LEFT // default
   var score = new Score
-  var isDead = false
   var isPaused = false
   var model = new SnakeModel
   var highscores = new Highscores(gameSize)
@@ -118,5 +117,6 @@ class SnakeController() extends Observable {
   def togglePause = {
     isPaused = !isPaused
   }
+  def isDead = model.dead
 }
 
