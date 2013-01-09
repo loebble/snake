@@ -1,4 +1,4 @@
-
+package de.htwg.snake
 
 import de.htwg.snake.uis.gui.Gui
 import de.htwg.snake.controller.SnakeController
