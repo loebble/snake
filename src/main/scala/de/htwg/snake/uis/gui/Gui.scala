@@ -1,19 +1,19 @@
 package de.htwg.snake.uis.gui
+
 import java.awt.Dimension
-import scala.swing.Frame
+
+import scala.swing.Action
 import scala.swing.MainFrame
 import scala.swing.Menu
 import scala.swing.MenuBar
 import scala.swing.MenuItem
 import scala.swing.TextField
+import scala.swing.event.Key
+
 import de.htwg.snake.controller.SnakeController
 import de.htwg.snake.model.SnakePanel
 import de.htwg.snake.uis.gui.themes.MonochromeTheme
-import scala.swing.event.Key
-import scala.swing.Action
-import de.htwg.snake.uis.gui.themes._
-import scala.swing.Button
-import scala.swing.event.ButtonClicked
+import de.htwg.snake.uis.gui.themes.NokiaTheme
 
 class Gui(controller: SnakeController) extends MainFrame {
 
@@ -33,8 +33,7 @@ class Gui(controller: SnakeController) extends MainFrame {
       val popupMenu = new PopupMenu {
         val textField = new TextField("Enter name:")
         contents += textField
-        button.text_=("OK")
-        button.action_=(Action("changeName") {
+        button.action_=(Action("OK") {
           controller.changeName(textField.text)
           button.popUp.hide
         })

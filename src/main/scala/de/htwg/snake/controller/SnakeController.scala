@@ -7,8 +7,8 @@ import de.htwg.snake.model.SnakePosition
 import de.htwg.util.Observable
 
 class SnakeController() extends Observable {
-  var speed = 2;	// default
-  var gameSize = 30	// default
+  var speed = 2; // default
+  var gameSize = 30 // default
   var direction = Direction.LEFT // default
   var score = new Score
   var isDead = false
@@ -52,30 +52,33 @@ class SnakeController() extends Observable {
     }
     val res = model.handleNewPosition(newPos)
     res match {
-      case "death" => println("tot - score: " + score) ; highscores.writeToHighscores(model.name,score.get); model.dead = true
-      case "grow" => println("wachsen"); score.scored
-      case "growExtra" => println("Extra wachsen"); score.scoredExtra
-      case "empty" => println("nix");
+      case "death" =>
+        println("tot - score: " + score.get); highscores.writeToHighscores(model.name, score.get); model.dead = true
+      case "grow" =>
+        score.scored
+      case "growExtra" =>
+        score.scoredExtra
+      case "empty" =>
     }
     notifyObservers
   }
 
   def initModel() = {
-    model = new SnakeModel(model.x,model.y)
+    model = new SnakeModel(model.x, model.y)
     model.initSnake
     model.initField
   }
 
   def changeSize(size: Int) = {
-    val player=model.name
+    val player = model.name
     score = new Score(_speed = speed)
     this.highscores = new Highscores(size)
     model = new SnakeModel(size, size)
     model.initSnake
     model.initField
-    model.name=player
+    model.name = player
   }
-  
+
   def getHighscores = {
     highscores.readFromHighscores
   }
@@ -103,13 +106,13 @@ class SnakeController() extends Observable {
     model.name = name
   }
   def newGame = {
-    val player=model.name
+    val player = model.name
     score = new Score(_speed = speed)
     initModel()
     model.name = player
     initTimer()
   }
-  def setSpeed(x:Int){
+  def setSpeed(x: Int) {
     speed = x
   }
   def togglePause = {

@@ -2,9 +2,4 @@ noName;108
 Steven;100
 Jan;50
 noName;36
-Mark;10
-Mark;10
-Mark;10
-Mark;10
-Mark;10
-Mark;10
+noName;12

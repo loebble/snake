@@ -67,7 +67,6 @@ class SnakePanel(controller: SnakeController) extends Panel with Observer {
 
   def renderGameOver(g: Graphics2D) = {
 
-    
     // game over
     val gameOverFont = new Font("LucidaSans", Font.PLAIN, 40)
     g.setFont(gameOverFont)
