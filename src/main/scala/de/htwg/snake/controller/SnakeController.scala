@@ -99,7 +99,7 @@ class SnakeController() extends Observable {
     })
     timer.start
   }
-  def changeName(name:String) {
+  def changeName(name: String) {
     model.name = name
   }
   def newGame = {

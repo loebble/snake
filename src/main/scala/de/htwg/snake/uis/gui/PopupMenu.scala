@@ -11,7 +11,8 @@ object PopupMenu {
 
 class PopupMenu extends Component with Wrapper {
   val ref = this
-  private var _button = new Button{
+
+  private var _button = new Button {
     val popUp = ref
   }
   def button = _button

@@ -40,11 +40,11 @@ class Gui(controller: SnakeController) extends MainFrame {
         })
         contents += button
       }
-      contents += new MenuItem(Action("Namen �ndern") {
+      contents += new MenuItem(Action("Change Highscore Name") {
         popupMenu.show(this, height / 2, width / 2)
         resize
       })
-      contents += new MenuItem(Action("Quit") { exit })
+      contents += new MenuItem(Action("Quit") { sys.exit })
     }
     contents += new Menu("Theme") {
       mnemonic = Key.T
@@ -75,6 +75,6 @@ class Gui(controller: SnakeController) extends MainFrame {
     centerOnScreen()
   }
 
-  def height = controller.model.y * panel.factor + panel.factor + 60 // menubar offset?
-  def width = controller.model.x * panel.factor + panel.factor + 15
+  def height = controller.model.y * panel.factor + panel.factor + 44 // menubar offset?
+  def width = controller.model.x * panel.factor + panel.factor
 }
