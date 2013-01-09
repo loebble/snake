@@ -67,26 +67,37 @@ class SnakePanel(controller: SnakeController) extends Panel with Observer {
 
   def renderGameOver(g: Graphics2D) = {
 
+    var sizeFactor = controller.model.y match {
+      case 10 =>
+        .4
+      case 30 =>
+        1
+      case 50 =>
+        1.5
+      case _ =>
+        .5
+    }
+
     // game over
-    val gameOverFont = new Font("LucidaSans", Font.PLAIN, 40)
+    val gameOverFont = new Font("LucidaSans", Font.PLAIN, (40 * sizeFactor).toInt)
     g.setFont(gameOverFont)
     val gameOver = "Game Over!"
-    g.drawString(gameOver, (controller.model.x * factor - g.getFontMetrics().stringWidth(gameOver)) / 2, 50)
+    g.drawString(gameOver, (controller.model.x * factor - g.getFontMetrics().stringWidth(gameOver)) / 2, (50 * sizeFactor).toInt)
 
     // score
-    val scoreFont = new Font("LucidaSans", Font.PLAIN, 30)
+    val scoreFont = new Font("LucidaSans", Font.PLAIN, (30 * sizeFactor).toInt)
     g.setFont(scoreFont)
     val score = "Your Score: " + controller.score.get
-    g.drawString(score, (controller.model.x * factor - g.getFontMetrics().stringWidth(score)) / 2, 100)
+    g.drawString(score, (controller.model.x * factor - g.getFontMetrics().stringWidth(score)) / 2, (100 * sizeFactor).toInt)
 
     // highscores
-    val highscoreFont = new Font("LucidaSans", Font.PLAIN, 15)
+    val highscoreFont = new Font("LucidaSans", Font.PLAIN, (15 * sizeFactor).toInt)
     g.setFont(highscoreFont)
-    var highscoreStart = 150
+    var highscoreStart = (150 * sizeFactor).toInt
     g.drawString("Highscores (" + controller.getHighscoresKind + "):", 10, highscoreStart)
     val highscores = controller.getHighscores
     highscores.foreach { e =>
-      highscoreStart += 20
+      highscoreStart += (20 * sizeFactor).toInt
       g.drawString(e._1 + ": " + e._2, 10, highscoreStart)
     }
 
