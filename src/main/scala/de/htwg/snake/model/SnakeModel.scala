@@ -19,7 +19,6 @@ class SnakeModel(val x: Int = 30, val y: Int = 30) {
     field.initialize
     // First Food
     val foodPos = field.getFood(snake)
-    println("Food:" + foodPos(0) + foodPos(1))
   }
 
   def handleNewPosition(pos: SnakePosition): String = {
