@@ -52,7 +52,7 @@ class SnakeController() extends Observable {
     val res = model.handleNewPosition(newPos)
     res match {
       case "death" =>
-        println("tot - score: " + score.get); highscores.writeToHighscores(model.name, score.get); model.dead = true
+        highscores.writeToHighscores(model.name, score.get); model.dead = true
       case "grow" =>
         score.scored
       case "growExtra" =>

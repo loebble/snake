@@ -24,7 +24,6 @@ class SnakeModel(val x: Int = 30, val y: Int = 30) {
   def handleNewPosition(pos: SnakePosition): String = {
     val tail = snake.last
     if (snake.contains(pos)) {
-      println("selbst gefressen -> tot")
       return "death"
     }
     snake ::= pos

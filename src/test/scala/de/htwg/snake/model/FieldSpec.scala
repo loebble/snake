@@ -4,7 +4,6 @@ class FieldSpec extends SpecificationWithJUnit {
   "A new Field(x,y) " should {
     val field = new Field(30, 30)
     field.initialize
-    println(field.count)
     var snake: List[SnakePosition] = Nil
     snake ::= new SnakePosition(field.x / 2, field.y / 2)
     "have a default cells Array of Dimension (x+1,y+1) " in {
@@ -31,7 +30,6 @@ class FieldSpec extends SpecificationWithJUnit {
     "give me a Food and set the CellType on the field to FOOD" in {
       field.food = Array(-1, -1)
       val p = field.getFood(snake)
-      println(field.count)
       val cellType = field.cells(p(0))(p(1))
       cellType must be_==(CellType.FOOD)
     }
